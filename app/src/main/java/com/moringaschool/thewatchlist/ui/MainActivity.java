@@ -27,7 +27,8 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView)
-    RecyclerView recyclerView ;
+    RecyclerView recyclerView;
+    
     private List<Result> results;
 
     @Override
@@ -36,12 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Button button = this.findViewById(R.id.button);
-        button.setOnClickListener(v -> apiCall());
-
-apiCall();
-
         apiCall();
-apiCall();
+        button.setOnClickListener(v -> apiCall());
     }
 
     private void apiCall() {
@@ -55,6 +52,7 @@ apiCall();
                 if (response.isSuccessful()) {
 
                     results = response.body().getResults();
+                    Constants.RESULTS = results;
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                     MovieItemAdapter adapter = new MovieItemAdapter(results,getApplicationContext());

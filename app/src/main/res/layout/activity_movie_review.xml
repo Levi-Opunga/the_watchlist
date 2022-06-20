@@ -6,161 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.MovieReview">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="6dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="138dp"
-        tools:srcCompat="@tools:sample/avatars" />
 
-    <androidx.cardview.widget.CardView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
         android:layout_width="0dp"
-        android:layout_height="289dp"
-        app:cardBackgroundColor="#0F0E0E"
-        app:layout_constraintBottom_toTopOf="@+id/reviewCard2"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="355dp"
-                android:layout_height="56dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="230dp"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center"
-                android:text="The WatchList"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                android:textSize="34sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/reviewCard2"
-        android:layout_width="0dp"
-        android:layout_height="480dp"
-        android:layout_marginTop="248dp"
-        app:cardCornerRadius="35dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="53dp"
-                android:layout_marginTop="60dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center">
-
-                    <TextView
-                        android:id="@+id/movieName"
-                        android:layout_width="91dp"
-                        android:layout_height="24dp"
-                        android:layout_marginStart="16dp"
-                        android:text="TextView"
-                        android:textAlignment="center"
-                        android:textColor="#0F0E0E"
-                        app:layout_constraintBottom_toBottomOf="@+id/releaseYear"
-                        app:layout_constraintEnd_toStartOf="@+id/releaseYear"
-                        app:layout_constraintHorizontal_bias="0.873"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/releaseYear"
-                        app:layout_constraintVertical_bias="0.0" />
-
-                    <TextView
-                        android:id="@+id/releaseYear"
-                        android:layout_width="105dp"
-                        android:layout_height="24dp"
-                        android:layout_marginEnd="120dp"
-                        android:text="TextView"
-                        android:textAlignment="center"
-                        android:textColor="#0F0E0E"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </RelativeLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/director"
-                    android:layout_width="177dp"
-                    android:layout_height="26dp"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#0F0E0E"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.47"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.045" />
-
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    android:layout_width="188dp"
-                    android:layout_height="41dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/director"
-                    app:layout_constraintVertical_bias="0.091" />
-
-                <TextView
-                    android:id="@+id/watchView"
-                    android:layout_width="112dp"
-                    android:layout_height="17dp"
-                    android:text="Watch"
-                    android:textAlignment="center"
-                    android:textColor="#0F0E0E"
-                    tools:layout_editor_absoluteX="149dp"
-                    tools:layout_editor_absoluteY="129dp" />
-
-                <TextView
-                    android:id="@+id/summaryReview"
-                    android:layout_width="336dp"
-                    android:layout_height="105dp"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#0F0E0E"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/watchView" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
