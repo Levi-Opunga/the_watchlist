@@ -38,7 +38,7 @@ public class Result {
     private Link link;
     @SerializedName("multimedia")
     @Expose
-    private Object multimedia;
+    private Multimedia multimedia;
 
     /**
      * No args constructor for use in serialization
@@ -61,7 +61,7 @@ public class Result {
      * @param mpaaRating
      * @param dateUpdated
      */
-    public Result(String displayTitle, String mpaaRating, Integer criticsPick, String byline, String headline, String summaryShort, String publicationDate, String openingDate, String dateUpdated, Link link, Object multimedia) {
+    public Result(String displayTitle, String mpaaRating, Integer criticsPick, String byline, String headline, String summaryShort, String publicationDate, String openingDate, String dateUpdated, Link link, Multimedia multimedia) {
         super();
         this.displayTitle = displayTitle;
         this.mpaaRating = mpaaRating;
@@ -156,11 +156,11 @@ public class Result {
         this.link = link;
     }
 
-    public Object getMultimedia() {
+    public Multimedia getMultimedia() {
         return multimedia;
     }
 
-    public void setMultimedia(Object multimedia) {
+    public void setMultimedia(Multimedia multimedia) {
         this.multimedia = multimedia;
     }
 
