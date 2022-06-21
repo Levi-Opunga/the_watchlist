@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     results = response.body().getResults();
+                    Constants.RESULTS_RESTORE = results;
                     Constants.RESULTS = results;
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
@@ -100,6 +101,11 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful()) {
 
                             results = response.body().getResults();
+                            if (results == null){
+                                searchView.setQuery("",true);
+                                searchView.setQueryHint("Not Found enter another search");
+                                return;
+                            }
                             Constants.RESULTS = results;
                             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                             recyclerView.setLayoutManager(linearLayoutManager);
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                             recyclerView.setAdapter(adapter);
 
 
-                            Log.d("thisisit", results.toString());
+
 
                         }
                     }
@@ -132,33 +138,32 @@ public class MainActivity extends AppCompatActivity {
                     return false;
                 }
 
-                nycTimesApi api = nycTimesClient.getClient();
-                Call<Example> call = api.searchMovies(newText, Constants.API_KEY);
-                call.enqueue(new Callback<Example>() {
-
-                    @Override
-                    public void onResponse(Call<Example> call, Response<Example> response) {
-
-                        if (response.isSuccessful()) {
-
-                            results = response.body().getResults();
-                            Constants.RESULTS = results;
-                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-                            recyclerView.setLayoutManager(linearLayoutManager);
-                            MovieItemAdapter adapter = new MovieItemAdapter(results, getApplicationContext());
-                            recyclerView.setAdapter(adapter);
-
-
-                            Log.d("thisisit", results.toString());
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Example> call, Throwable t) {
-
-                    }
-                });
+//                nycTimesApi api = nycTimesClient.getClient();
+//                Call<Example> call = api.searchMovies(newText, Constants.API_KEY);
+//                call.enqueue(new Callback<Example>() {
+//
+//                    @Override
+//                    public void onResponse(Call<Example> call, Response<Example> response) {
+//
+//                        if (response.isSuccessful()) {
+//
+//                            results = response.body().getResults();
+//                            Constants.RESULTS = results;
+//                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+//                            recyclerView.setLayoutManager(linearLayoutManager);
+//                            MovieItemAdapter adapter = new MovieItemAdapter(results, getApplicationContext());
+//                            recyclerView.setAdapter(adapter);
+//
+//
+//
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Example> call, Throwable t) {
+//
+//                    }
+//                });
                 return false;
             }
         });

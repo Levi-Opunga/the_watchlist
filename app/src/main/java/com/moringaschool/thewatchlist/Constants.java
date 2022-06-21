@@ -12,4 +12,5 @@ public class Constants {
 
     public static final String FIREBASE_CHILD_MOVIE = "MOVIE";
     public static final String FIREBASE_CHILD_SEARCHED_MOVIES = "searchedMovies";
+    public static List<Result> RESULTS_RESTORE;
 }
