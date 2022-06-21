@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "449597782039",
+    "project_id": "the-watchlist-fd33f",
+    "storage_bucket": "the-watchlist-fd33f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449597782039:android:240dac3a2719686820c452",
+        "android_client_info": {
+          "package_name": "com.moringaschool.thewatchlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449597782039-d66bnio21lb36ll2lfhnl0n5rsrbqh62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCTJZeseLYLNNmswKLyxbuKb9TCs2YJyQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449597782039-d66bnio21lb36ll2lfhnl0n5rsrbqh62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
