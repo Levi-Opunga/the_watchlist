@@ -146,11 +146,12 @@
                         android:id="@+id/watchView"
                         android:layout_width="112dp"
                         android:layout_height="17dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="4dp"
                         android:text="Watch"
                         android:textAlignment="center"
                         android:textColor="#0F0E0E"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.498"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/rating" />
 
@@ -165,19 +166,31 @@
                         android:textColor="#FFFFFF"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/watchView" />
+                        app:layout_constraintTop_toBottomOf="@+id/watchView"
+                        app:layout_constraintVertical_bias="0.208" />
 
                     <TextView
                         android:id="@+id/rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="8dp"
                         android:text="Rating"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.498"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/director" />
+
+                    <Button
+                        android:id="@+id/saveBtn"
+                        android:layout_width="174dp"
+                        android:layout_height="38dp"
+                        android:text="Button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/summaryReview" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
