@@ -17,6 +17,7 @@ import java.util.List;
 
 public class MoviePagerAdapter extends FragmentStateAdapter {
     List<Result> list;
+    public static int position;
 
     public MoviePagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle,  List<Result> list) {
         super(fragmentManager, lifecycle);
@@ -31,6 +32,12 @@ public class MoviePagerAdapter extends FragmentStateAdapter {
       list.forEach(result ->{
           fragments.add(new MovieReviewFragment(result));
       });
+        boolean first= true;
+
+        if(first){
+            first = false;
+            return fragments.get(MoviePagerAdapter.position);
+        }
 
         return fragments.get(position);
     }

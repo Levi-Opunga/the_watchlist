@@ -48,8 +48,9 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.view
              holder.nameView.setText(list.get(position).getDisplayTitle());
      holder.summaryShort.setText(list.get(position).getSummaryShort());
      holder.card.setOnClickListener(v->{
+         MoviePagerAdapter.position = holder.getAdapterPosition();
          Intent intent = new Intent(context, MovieReview.class);
-         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
          context.startActivity(intent);
      });
     }
