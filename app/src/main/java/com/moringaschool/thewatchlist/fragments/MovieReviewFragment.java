@@ -9,9 +9,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.R;
 import com.moringaschool.thewatchlist.models.Result;
 import com.squareup.picasso.Picasso;
@@ -19,23 +24,18 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-public class MovieReviewFragment extends Fragment {
-    @BindView(R.id.movieName)
-    TextView movieName;
-    @BindView(R.id.releaseYear)
-    TextView releaseYear;
-    @BindView(R.id.director)
-    TextView director;
-    @BindView(R.id.summaryReview)
-    TextView summaryReview;
-    @BindView(R.id.movieImage)
-    ImageView movieImage;
-    @BindView(R.id.rating)
-            TextView rating;
-
+public class MovieReviewFragment extends Fragment implements View.OnClickListener{
+    @BindView(R.id.movieName) TextView movieName;
+    @BindView(R.id.releaseYear) TextView releaseYear;
+    @BindView(R.id.director) TextView director;
+    @BindView(R.id.summaryReview) TextView summaryReview;
+    @BindView(R.id.movieImage) ImageView movieImage;
+    @BindView(R.id.rating) TextView rating;
+    @BindView(R.id.saveBtn) Button saveButton;
 
 Result result;
+
+FirebaseDatabase firebaseDatabase;
 
     public MovieReviewFragment(Result result) {
         this.result = result;
@@ -45,6 +45,8 @@ Result result;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_movie_review, container, false);
+
+
     }
 
     @Override
@@ -57,6 +59,22 @@ Result result;
     releaseYear.setText(result.getOpeningDate());
     rating.setText(result.getMpaaRating());
         Picasso.get().load(result.getMultimedia().getSrc()).into(movieImage);
+
+        saveButton.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if(v == saveButton){
+            DatabaseReference movieRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_MOVIE);
+            movieRef.push().setValue(result);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+
+        }
 
     }
 }
