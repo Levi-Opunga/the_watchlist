@@ -1,4 +1,4 @@
-package com.example.the_watchlist;
+package com.example.thewatchlist;
 
 import android.content.Context;
 

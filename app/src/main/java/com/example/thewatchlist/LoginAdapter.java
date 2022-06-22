@@ -1,8 +1,7 @@
-package com.example.the_watchlist;
+package com.example.thewatchlist;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
