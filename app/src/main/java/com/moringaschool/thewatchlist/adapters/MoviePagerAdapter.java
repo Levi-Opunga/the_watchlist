@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.moringaschool.thewatchlist.fragments.MovieReviewFragment;
@@ -17,6 +18,8 @@ import java.util.List;
 
 public class MoviePagerAdapter extends FragmentStateAdapter {
     List<Result> list;
+    public static int position;
+    boolean first= true;
 
     public MoviePagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle,  List<Result> list) {
         super(fragmentManager, lifecycle);
@@ -31,6 +34,12 @@ public class MoviePagerAdapter extends FragmentStateAdapter {
       list.forEach(result ->{
           fragments.add(new MovieReviewFragment(result));
       });
+
+
+        if(first){
+            first = false;
+            return fragments.get(MoviePagerAdapter.position);
+        }
 
         return fragments.get(position);
     }

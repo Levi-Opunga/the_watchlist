@@ -58,8 +58,9 @@ FirebaseDatabase firebaseDatabase;
     movieName.setText(result.getDisplayTitle());
     releaseYear.setText(result.getOpeningDate());
     rating.setText(result.getMpaaRating());
+    if(result.getMultimedia()!=null) {
         Picasso.get().load(result.getMultimedia().getSrc()).into(movieImage);
-
+    }
         saveButton.setOnClickListener(this);
 
     }
