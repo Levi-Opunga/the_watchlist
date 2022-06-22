@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "449597782039",
-    "project_id": "the-watchlist-fd33f",
-    "storage_bucket": "the-watchlist-fd33f.appspot.com"
+    "project_number": "184160415251",
+    "firebase_url": "https://the-watchlist-5b04b-default-rtdb.firebaseio.com",
+    "project_id": "the-watchlist-5b04b",
+    "storage_bucket": "the-watchlist-5b04b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:449597782039:android:240dac3a2719686820c452",
+        "mobilesdk_app_id": "1:184160415251:android:ebb931931761d3d34ed9e6",
         "android_client_info": {
-          "package_name": "com.moringaschool.thewatchlist"
+          "package_name": "com.example.the_watchlist"
         }
       },
       "oauth_client": [
         {
-          "client_id": "449597782039-d66bnio21lb36ll2lfhnl0n5rsrbqh62.apps.googleusercontent.com",
+          "client_id": "184160415251-rac82evctot164u6pk72g3eb7ejksrt5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCCTJZeseLYLNNmswKLyxbuKb9TCs2YJyQ"
+          "current_key": "AIzaSyAfCXg8p3xlR0BnXDcFLEcDiAhIkrS1biU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "449597782039-d66bnio21lb36ll2lfhnl0n5rsrbqh62.apps.googleusercontent.com",
+              "client_id": "184160415251-rac82evctot164u6pk72g3eb7ejksrt5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
