@@ -1,14 +1,18 @@
 package com.example.the_watchlist;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LogInActivity extends AppCompatActivity implements View.OnClickListener{
     TabLayout tabLayout;
@@ -16,6 +20,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     FloatingActionButton google, apple, twitter;
     Button register;
     float v =0;
+    private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener AuthStateListener;
 
 
     @Override
@@ -30,6 +36,22 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         twitter = findViewById(R.id.fab_twitter);
         register = findViewById(R.id.register);
 
+        auth = FirebaseAuth.getInstance();
+
+        AuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if (user != null) {
+                    Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        };
         tabLayout.addTab(tabLayout.newTab().setText("Login"));
         tabLayout.addTab(tabLayout.newTab().setText("Signup"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -77,6 +99,19 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
 
 
-    };
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(AuthStateListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (AuthStateListener != null) {
+            auth.removeAuthStateListener(AuthStateListener);
+        }
+    }
 
 }

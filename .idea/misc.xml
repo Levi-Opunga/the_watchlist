@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/button_bg.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/vie_bg.xml" value="0.1465" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13360507246376813" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_on_boarding2.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_on_boarding3.xml" value="0.19270833333333334" />
