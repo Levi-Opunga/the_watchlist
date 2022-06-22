@@ -13,8 +13,9 @@ import com.google.android.material.tabs.TabLayout;
 public class LogInActivity extends AppCompatActivity implements View.OnClickListener{
     TabLayout tabLayout;
     ViewPager viewPager;
-    FloatingActionButton google, apple;
+    FloatingActionButton google, apple, twitter;
     Button register;
+    float v =0;
 
 
     @Override
@@ -26,6 +27,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         viewPager = findViewById(R.id.view_pager);
         google = findViewById(R.id.fab_google);
         apple = findViewById(R.id.fab_apple);
+        twitter = findViewById(R.id.fab_twitter);
         register = findViewById(R.id.register);
 
         tabLayout.addTab(tabLayout.newTab().setText("Login"));
@@ -39,15 +41,18 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         google.setTranslationY(300);
         apple.setTranslationY(300);
+        twitter.setTranslationY(300);
         tabLayout.setTranslationY(300);
 
-//        google.setAlpha(v);
-//        apple.setAlpha(v);
-//        tabLayout.setAlpha(v);
+        google.setAlpha(v);
+        apple.setAlpha(v);
+        twitter.setAlpha(v);
+        tabLayout.setAlpha(v);
 
         google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(400).start();
         apple.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
-        google.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        twitter.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
+        tabLayout.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
 
 
     }
