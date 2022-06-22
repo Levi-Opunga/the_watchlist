@@ -1,5 +1,7 @@
 package com.moringaschool.thewatchlist.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.thewatchlist.Constants;
@@ -32,6 +36,7 @@ public class MovieReviewFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.movieImage) ImageView movieImage;
     @BindView(R.id.rating) TextView rating;
     @BindView(R.id.saveBtn) Button saveButton;
+    @BindView(R.id.watchView) TextView mWatchTextView;
 
 Result result;
 
@@ -62,20 +67,34 @@ FirebaseDatabase firebaseDatabase;
         Picasso.get().load(result.getMultimedia().getSrc()).into(movieImage);
     }
         saveButton.setOnClickListener(this);
+    mWatchTextView.setOnClickListener(this);
+
+
 
     }
 
     @Override
     public void onClick(View v) {
 
+//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//        FirebaseUser user = firebaseAuth.getCurrentUser();
+//        String uid = user.getUid();
+
         if(v == saveButton){
             DatabaseReference movieRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_MOVIE);
+                    .getReference(Constants.FIREBASE_CHILD_MOVIE).child("user");
             movieRef.push().setValue(result);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 
         }
+        if(v == mWatchTextView){
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(result.getLink().getUrl()));
+
+                startActivity(i);
+        }
+
 
     }
+
 }

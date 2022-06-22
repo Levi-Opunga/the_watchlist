@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -42,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Button button = this.findViewById(R.id.button);
         apiCall();
-        button.setOnClickListener(v -> apiCall());
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SavedMovies.class);
+            startActivity(intent);
+        });
     }
 
     private void apiCall() {
