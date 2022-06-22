@@ -38,8 +38,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
 
 
-        splashImg.animate().translationY(-1800).setDuration(1000).setStartDelay(4000);
-        appName.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
+        splashImg.animate().translationY(-4000).setDuration(1000).setStartDelay(4000);
+        appName.animate().translationY(4000).setDuration(1000).setStartDelay(4000);
         lottieAnimationView.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
 
     }
