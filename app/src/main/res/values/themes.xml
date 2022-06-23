@@ -13,8 +13,12 @@
         <item name="android:statusBarColor" tools:targetApi="l">#252525</item>
         <!-- Customize your theme here. -->
     </style>
-    <style parent="" name="circleImage">
+    <style parent="Theme.AppCompat" name="circleImage">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">15%</item>
+    </style>
+    <style parent="Theme.AppCompat" name="circular">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
     </style>
 </resources>

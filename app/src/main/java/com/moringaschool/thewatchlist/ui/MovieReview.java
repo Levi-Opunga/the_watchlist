@@ -27,10 +27,6 @@ public class MovieReview extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-//        mSearchedMovie = FirebaseDatabase
-//                .getInstance()
-//                        .getReference().child(Constants.FIREBASE_CHILD_SEARCHED_MOVIES);
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_review);

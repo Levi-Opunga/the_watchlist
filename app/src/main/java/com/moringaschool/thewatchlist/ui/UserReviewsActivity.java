@@ -7,10 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,43 +18,44 @@ import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.R;
 import com.moringaschool.thewatchlist.adapters.MovieItemAdapter;
-import com.moringaschool.thewatchlist.models.Example;
+import com.moringaschool.thewatchlist.adapters.ReviewItemAdapter;
 import com.moringaschool.thewatchlist.models.Result;
+import com.moringaschool.thewatchlist.models.Reviews;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SavedMovies extends AppCompatActivity {
+public class UserReviewsActivity extends AppCompatActivity {
 
     private DatabaseReference movieRef;
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-    private List<Result> list = new ArrayList<>();
+    private List<Reviews> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
-
-
-
         TabLayout tablayout = this.findViewById(R.id.tabLayout);
+        tablayout.selectTab(tablayout.getTabAt(1));
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
-                    Intent intent = new Intent(SavedMovies.this, MainActivity.class);
+                    Intent intent = new Intent(UserReviewsActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
                 if (tab.getPosition() == 2) {
-                    return;
+                    Intent intent = new Intent(UserReviewsActivity.this, SavedMoviesActivity.class);
+                    startActivity(intent);
+                }
+
+                if (tab.getPosition() == 1) {
 
                 }
             }
@@ -70,36 +70,32 @@ public class SavedMovies extends AppCompatActivity {
 
             }
         });
+        for (int i = 0; i < 2; i++) {
+            movieRef = FirebaseDatabase.getInstance().getReference("Reviews");
 
 
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        String uid = user.getUid();
-
-        movieRef = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_MOVIE).child("user");
-
-
-        movieRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Result result = dataSnapshot.getValue(Result.class);
-                    list.add(result);
+            movieRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Reviews result = dataSnapshot.getValue(Reviews.class);
+                        list.add(result);
+                        Log.d("ssssshhh","sssshhh");
+                    }
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+                    mRecyclerView.setLayoutManager(linearLayoutManager);
+                    ReviewItemAdapter adapter = new ReviewItemAdapter(list, getApplication().getApplicationContext());
+                    mRecyclerView.setAdapter(adapter);
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        MovieItemAdapter adapter = new MovieItemAdapter(list, getApplicationContext());
-        mRecyclerView.setAdapter(adapter);
+                }
+            });
 
 
+
+        }
     }
-
 }
-

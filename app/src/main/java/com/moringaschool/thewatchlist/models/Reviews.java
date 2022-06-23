@@ -4,6 +4,19 @@ public class Reviews {
     private String review;
     private Float rating;
     private String user;
+    private String userImage;
+
+    public String getUserImage() {
+        return userImage;
+    }
+
+    public void setUserImage(String userImage) {
+        this.userImage = userImage;
+    }
+
+    public Reviews() {
+
+    }
 
     public Reviews(String review, Float rating) {
         this.review = review;
@@ -14,6 +27,7 @@ public class Reviews {
         this.review = review;
         this.rating = rating;
         this.user = user;
+        this.userImage = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
     }
 
     public String getUser() {

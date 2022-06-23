@@ -16,7 +16,10 @@
         android:theme="@style/Theme.TheWatchlist"
         tools:targetApi="31">
         <activity
-            android:name=".ui.SavedMovies"
+            android:name=".ui.UserReviewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SavedMoviesActivity"
             android:exported="false" />
         <activity
             android:name=".ui.LogInActivity"
@@ -38,9 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"/>
 
         <meta-data
             android:name="preloaded_fonts"

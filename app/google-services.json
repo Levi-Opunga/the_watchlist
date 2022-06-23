@@ -34,6 +34,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184160415251:android:8095469fa6577f6f4ed9e6",
+        "android_client_info": {
+          "package_name": "com.moringaschool.thewatchlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184160415251-rac82evctot164u6pk72g3eb7ejksrt5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfCXg8p3xlR0BnXDcFLEcDiAhIkrS1biU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184160415251-rac82evctot164u6pk72g3eb7ejksrt5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

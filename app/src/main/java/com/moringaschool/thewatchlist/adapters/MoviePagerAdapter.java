@@ -10,6 +10,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.fragments.MovieReviewFragment;
 import com.moringaschool.thewatchlist.models.Result;
 
@@ -30,6 +31,11 @@ public class MoviePagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
+
+        if(Constants.saved){
+            list = Constants.RESULTS_SAVE;
+        }
+
       List<Fragment> fragments = new ArrayList<Fragment>();
       list.forEach(result ->{
           fragments.add(new MovieReviewFragment(result));

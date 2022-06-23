@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.SearchView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -42,8 +41,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Constants.saved = false;
 
         TabLayout tablayout = this.findViewById(R.id.tabLayout);
+
+        tablayout.selectTab(tablayout.getTabAt(0));
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -51,7 +53,12 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 if (tab.getPosition() == 2) {
-                    Intent intent = new Intent(MainActivity.this, SavedMovies.class);
+                    Intent intent = new Intent(MainActivity.this, SavedMoviesActivity.class);
+                    startActivity(intent);
+                }
+
+                if (tab.getPosition() == 1) {
+                    Intent intent = new Intent(MainActivity.this,UserReviewsActivity.class);
                     startActivity(intent);
                 }
             }
