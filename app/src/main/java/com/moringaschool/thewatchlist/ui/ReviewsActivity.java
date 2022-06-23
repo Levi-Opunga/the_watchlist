@@ -51,7 +51,7 @@ public class ReviewsActivity extends AppCompatActivity {
                 Float rating = mRatingBar.getRating();
 
 
-                Reviews reviews = new Reviews(review, rating, currentUser);
+                Reviews reviews = new Reviews(review, rating, currentUser,result.getDisplayTitle());
                 DatabaseReference reviewRef = FirebaseDatabase.getInstance().getReference("Reviews");
                 reviewRef.push().setValue(reviews);
 

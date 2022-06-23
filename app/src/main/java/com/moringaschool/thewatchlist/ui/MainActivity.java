@@ -4,6 +4,7 @@ package com.moringaschool.thewatchlist.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
 
 import com.google.android.material.tabs.TabLayout;
@@ -21,6 +24,7 @@ import com.moringaschool.thewatchlist.models.Example;
 import com.moringaschool.thewatchlist.models.Result;
 import com.moringaschool.thewatchlist.networking.nycTimesApi;
 import com.moringaschool.thewatchlist.networking.nycTimesClient;
+import com.moringaschool.thewatchlist.adapters.ImageAdapter;
 
 import java.util.List;
 
@@ -35,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     private List<Result> results;
+    @BindView(R.id.viewPager)
+     ViewPager mViewPager;
+    @BindView(R.id.left)
+    ImageView left;
+    @BindView(R.id.right)
+    ImageView right;
+    private ImageAdapter adapterView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Constants.saved = false;
+        mViewPager.setVisibility(View.GONE);
+        right.setVisibility(View.GONE);
+        left.setVisibility(View.GONE);
 
         TabLayout tablayout = this.findViewById(R.id.tabLayout);
 
@@ -76,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         apiCall();
 
+
     }
 
     private void apiCall() {
@@ -95,11 +110,16 @@ public class MainActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                     MovieItemAdapter adapter = new MovieItemAdapter(results, getApplicationContext());
                     recyclerView.setAdapter(adapter);
+                    adapterView = new ImageAdapter(getApplicationContext(),results);
+                    mViewPager.setAdapter(adapterView);
+
 
 
                     Log.d("thisisit", results.toString());
 
                 }
+
+
             }
 
             @Override
@@ -124,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
                 if(query == null){
                     return false;
                 }
+                mViewPager.setVisibility(View.GONE);
+                right.setVisibility(View.GONE);
+                left.setVisibility(View.GONE);
+
                 nycTimesApi api = nycTimesClient.getClient();
                 Call<Example> call = api.searchMovies(query, Constants.API_KEY);
                 call.enqueue(new Callback<Example>() {

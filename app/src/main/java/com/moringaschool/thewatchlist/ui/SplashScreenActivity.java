@@ -8,11 +8,14 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.moringaschool.thewatchlist.R;
 import com.moringaschool.thewatchlist.fragments.OnBoardingFragment1;
 import com.moringaschool.thewatchlist.fragments.OnBoardingFragment2;
@@ -26,6 +29,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     private static final int NUM_PAGES =3;
     private ViewPager viewPager;
     private ScreenSlidePageAdapter pagerAdapter;
+    private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener AuthStateListener;
 
 
     @Override
@@ -45,7 +50,36 @@ public class SplashScreenActivity extends AppCompatActivity {
         splashImg.animate().translationY(-4000).setDuration(1000).setStartDelay(4000);
         appName.animate().translationY(4000).setDuration(1000).setStartDelay(4000);
         lottieAnimationView.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
+        auth = FirebaseAuth.getInstance();
 
+        AuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if (user != null) {
+                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        };
+
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(AuthStateListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (AuthStateListener != null) {
+            auth.removeAuthStateListener(AuthStateListener);
+        }
     }
 
     private class ScreenSlidePageAdapter extends FragmentStatePagerAdapter {

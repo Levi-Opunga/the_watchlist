@@ -54,7 +54,7 @@ public class ReviewItemAdapter extends RecyclerView.Adapter<ReviewItemAdapter.vi
                 list.get(position).getUserImage()!= null) {
             Picasso.get().load(list.get(position).getUserImage()).into(holder.imageView);
         }
-        holder.nameView.setText(list.get(position).getUser());
+        holder.nameView.setText(list.get(position).getMovie());
         holder.summaryShort.setText(list.get(position).getReview());
        holder.ratingBar.setRating(list.get(position).getRating());
 //        holder.card.setOnClickListener(v -> {

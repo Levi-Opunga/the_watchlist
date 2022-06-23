@@ -22,8 +22,8 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
     FloatingActionButton google, apple, twitter;
     Button register;
     float v =0;
-    private FirebaseAuth auth;
-    private FirebaseAuth.AuthStateListener AuthStateListener;
+//    private FirebaseAuth auth;
+//    private FirebaseAuth.AuthStateListener AuthStateListener;
 
 
     @Override
@@ -38,22 +38,7 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         twitter = findViewById(R.id.fab_twitter);
         register = findViewById(R.id.register);
 
-        auth = FirebaseAuth.getInstance();
 
-        AuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                if (user != null) {
-                    Intent intent = new Intent(LogInActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
-
-            }
-        };
         tabLayout.addTab(tabLayout.newTab().setText("Login"));
         tabLayout.addTab(tabLayout.newTab().setText("Signup"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -93,7 +78,22 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         apple.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(600).start();
         twitter.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(800).start();
         tabLayout.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
-
+//        auth = FirebaseAuth.getInstance();
+//
+//        AuthStateListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
+//
+//                if (user != null) {
+//                    Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//
+//            }
+//        };
 
     }
 
@@ -102,18 +102,18 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        auth.addAuthStateListener(AuthStateListener);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (AuthStateListener != null) {
-            auth.removeAuthStateListener(AuthStateListener);
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        auth.addAuthStateListener(AuthStateListener);
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        if (AuthStateListener != null) {
+//            auth.removeAuthStateListener(AuthStateListener);
+//        }
+//    }
 
 }

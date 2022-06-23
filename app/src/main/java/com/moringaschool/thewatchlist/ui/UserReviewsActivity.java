@@ -39,7 +39,7 @@ public class UserReviewsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_reviews);
         ButterKnife.bind(this);
         TabLayout tablayout = this.findViewById(R.id.tabLayout);
         tablayout.selectTab(tablayout.getTabAt(1));
@@ -70,7 +70,7 @@ public class UserReviewsActivity extends AppCompatActivity {
 
             }
         });
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             movieRef = FirebaseDatabase.getInstance().getReference("Reviews");
 
 

@@ -3,12 +3,17 @@ package com.moringaschool.thewatchlist.fragments;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +25,23 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.R;
+import com.moringaschool.thewatchlist.adapters.MultipleReviewAdapter;
+import com.moringaschool.thewatchlist.adapters.ReviewItemAdapter;
 import com.moringaschool.thewatchlist.models.Result;
+import com.moringaschool.thewatchlist.models.Reviews;
 import com.moringaschool.thewatchlist.ui.ReviewsActivity;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +61,9 @@ public class MovieReviewFragment extends Fragment implements View.OnClickListene
 Result result;
 
 FirebaseDatabase firebaseDatabase;
+    private DatabaseReference movieRef;
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
 
     public MovieReviewFragment(Result result) {
         this.result = result;
@@ -63,6 +81,39 @@ FirebaseDatabase firebaseDatabase;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     ButterKnife.bind(this,view);
+
+        for (int i = 0; i < 1; i++) {
+            movieRef = FirebaseDatabase.getInstance().getReference("Reviews");
+
+
+            movieRef.addValueEventListener(new ValueEventListener() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    List<Reviews> list = new ArrayList<Reviews>();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Reviews review= dataSnapshot.getValue(Reviews.class);
+                        list.add(review);
+                      list =  list.stream().filter(rev -> rev.getMovie()
+                              .equals(result.getDisplayTitle()))
+                              .collect(Collectors.toList());
+                        Log.d("ssssshhh","sssshhh");
+                    }
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    mRecyclerView.setLayoutManager(linearLayoutManager);
+                    MultipleReviewAdapter adapter = new MultipleReviewAdapter(list,getContext());
+                    mRecyclerView.setAdapter(adapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+
+
+        }
     director.setText(result.getByline());
     summaryReview.setText(result.getSummaryShort());
     movieName.setText(result.getDisplayTitle());
