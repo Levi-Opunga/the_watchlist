@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#555C7C"
     tools:context=".ui.ReviewsActivity">
 
     <TextView
         android:id="@+id/movieName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="100dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Movie Name"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,13 +25,15 @@
         android:layout_width="323dp"
         android:layout_height="134dp"
         android:layout_marginBottom="285dp"
-        android:hint="Leave a Review"
+        android:hint="Leave a review..."
+        android:background="@drawable/edit_text_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/reviewText"
+
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -41,7 +43,7 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        android:layout_width="249dp"
+        android:layout_width="248dp"
         android:layout_height="49dp"
         android:numStars="5"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
@@ -54,8 +56,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
-        android:background="@drawable/shape"
-        android:backgroundTint="#B82121"
+        android:background="@drawable/button_bg"
+
         android:text="Submit Review"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

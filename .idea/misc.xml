@@ -3,18 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable-v24/shape.xml" value="0.151" />
-        <entry key="app/src/main/res/drawable/shapeimage.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.1890625" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1890625" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_movie_review.xml" value="0.1890625" />
-        <entry key="app/src/main/res/layout/activity_reviews.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_saved_movies.xml" value="0.13949275362318841" />
-        <entry key="app/src/main/res/layout/dispaly_review.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/dispalyitem.xml" value="0.17708333333333334" />
-        <entry key="app/src/main/res/layout/fragment_movie_review.xml" value="0.2865853658536585" />
-        <entry key="app/src/main/res/menu/main_menu.xml" value="0.18802083333333333" />
+        <entry key="app/src/main/res/drawable/button_bg.xml" value="0.1465" />
+        <entry key="app/src/main/res/drawable/vie_bg.xml" value="0.1465" />
+        <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.1824074074074074" />
+        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1824074074074074" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1824074074074074" />
+        <entry key="app/src/main/res/layout/activity_movie_review.xml" value="0.1824074074074074" />
+        <entry key="app/src/main/res/layout/activity_reviews.xml" value="0.1824074074074074" />
+        <entry key="app/src/main/res/layout/activity_saved_movies.xml" value="0.1824074074074074" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_on_boarding2.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/fragment_on_boarding3.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/fragment_on_borading.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_on_borading1.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.19375" />
       </map>
     </option>
   </component>
