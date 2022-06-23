@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/purple_500">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="236dp"
@@ -15,8 +16,7 @@
         app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.431" />
-
+        app:layout_constraintVertical_bias="0.361" />
 
     <TextView
         android:id="@+id/textView1"

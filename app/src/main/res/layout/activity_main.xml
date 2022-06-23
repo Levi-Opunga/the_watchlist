@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:tabGravity="fill"
         app:tabIndicatorAnimationMode="elastic"
-        app:tabIndicatorColor="#1A0930"
+        app:tabIndicatorColor="@color/purple_700"
         app:tabIndicatorGravity="stretch"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/white"
