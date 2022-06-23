@@ -10,7 +10,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +25,7 @@ public class ReviewsActivity extends AppCompatActivity {
     @BindView(R.id.reviewText) TextInputEditText mText;
     @BindView(R.id.ratingBar) RatingBar mRatingBar;
     @BindView(R.id.submitReview) Button mSubmitBtn;
-    @BindView(R.id.movieName) TextView mMovieName;
+    @BindView(R.id.releaseYear) TextView mMovieName;
 
 
     @Override

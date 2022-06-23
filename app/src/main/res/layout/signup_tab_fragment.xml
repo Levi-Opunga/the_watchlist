@@ -42,19 +42,20 @@
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_bg"
         android:hint="Password"
-        android:textSize="16sp"
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginTop="20dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signemail"
         app:layout_constraintVertical_bias="0"
-        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintWidth_percent=".8" />
 
     <EditText
@@ -64,17 +65,18 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_bg"
         android:hint="Confirm Password"
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password"
         app:layout_constraintVertical_bias="0"
-        app:layout_constraintWidth_percent=".8"
-        app:layout_constraintHorizontal_bias=".5"/>
+        app:layout_constraintWidth_percent=".8" />
 
     <Button
         android:id="@+id/Signup"

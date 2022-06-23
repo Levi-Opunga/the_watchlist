@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -73,8 +75,10 @@ public class SavedMoviesActivity extends AppCompatActivity {
 
 //        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 //        String uid = user.getUid();
-        for (int i = 0; i < 2; i++) {
-            movieRef = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_MOVIE).child("user");
+        for (int i = 0; i < 1; i++) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+            movieRef = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_MOVIE).child(user.getDisplayName());
 
 
             movieRef.addValueEventListener(new ValueEventListener() {

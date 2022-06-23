@@ -51,9 +51,9 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="355dp"
-                        android:layout_height="56dp"
+                        android:id="@+id/itsName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"
                         android:layout_marginBottom="230dp"
                         android:fontFamily="@font/poppins_medium"
@@ -62,7 +62,6 @@
                         android:textAlignment="center"
                         android:textColor="#ffffff"
                         android:textSize="26sp"
-                        android:visibility="invisible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -100,33 +99,33 @@
                             android:textAlignment="center">
 
                             <TextView
-                                android:id="@+id/movieName"
+                                android:id="@+id/releaseYear"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
+                                android:layout_marginTop="4dp"
                                 android:gravity="center"
                                 android:text="TextView"
                                 android:textAlignment="center"
                                 android:textColor="#0F0E0E"
                                 android:textSize="24sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.502"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toBottomOf="@+id/nam" />
 
                             <TextView
-                                android:id="@+id/releaseYear"
+                                android:id="@+id/nam"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
                                 android:gravity="center"
-                                android:text="TextView"
+                                android:text="Release Year"
                                 android:textAlignment="center"
                                 android:textColor="#0F0E0E"
                                 android:textSize="18sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/movieName" />
+                                app:layout_constraintTop_toTopOf="parent" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </RelativeLayout>
 
@@ -156,7 +155,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:background="@drawable/edit_text_bg"
-                            android:text="Full Review"
+                            android:text="Read Full Review"
                             android:textAlignment="center"
                             android:textColor="#0808FA"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -169,7 +168,7 @@
                             android:layout_width="0dp"
                             android:layout_height="163dp"
                             android:layout_marginEnd="8dp"
-                            android:background="@drawable/shape"
+                            android:background="@drawable/button_bg"
                             android:gravity="center"
                             android:padding="20dp"
                             android:text="TextView"

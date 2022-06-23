@@ -33,7 +33,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.R;
 import com.moringaschool.thewatchlist.adapters.MultipleReviewAdapter;
-import com.moringaschool.thewatchlist.adapters.ReviewItemAdapter;
 import com.moringaschool.thewatchlist.models.Result;
 import com.moringaschool.thewatchlist.models.Reviews;
 import com.moringaschool.thewatchlist.ui.ReviewsActivity;
@@ -47,7 +46,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MovieReviewFragment extends Fragment implements View.OnClickListener{
-    @BindView(R.id.movieName) TextView movieName;
+    @BindView(R.id.itsName) TextView movieName;
     @BindView(R.id.releaseYear) TextView releaseYear;
     @BindView(R.id.director) TextView director;
     @BindView(R.id.summaryReview) TextView summaryReview;
@@ -117,6 +116,9 @@ FirebaseDatabase firebaseDatabase;
     director.setText(result.getByline());
     summaryReview.setText(result.getSummaryShort());
     movieName.setText(result.getDisplayTitle());
+    if(result.getOpeningDate()==null){
+        result.setOpeningDate("Unavailable");
+    }
     releaseYear.setText(result.getOpeningDate());
     rating.setText(result.getMpaaRating());
     if(result.getMultimedia()!=null) {
@@ -143,10 +145,10 @@ FirebaseDatabase firebaseDatabase;
 
             saveButton.setImageDrawable(res);
             saveButton.setBackgroundColor(getResources().getColor(R.color.red));
-
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             DatabaseReference movieRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_MOVIE).child("user");
+                    .getReference(Constants.FIREBASE_CHILD_MOVIE).child(user.getDisplayName());
             movieRef.push().setValue(result);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 

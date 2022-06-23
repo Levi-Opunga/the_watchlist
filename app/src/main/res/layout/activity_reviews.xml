@@ -7,7 +7,7 @@
     tools:context=".ui.ReviewsActivity">
 
     <TextView
-        android:id="@+id/movieName"
+        android:id="@+id/releaseYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -49,7 +49,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movieName" />
+        app:layout_constraintTop_toBottomOf="@+id/releaseYear" />
 
     <Button
         android:id="@+id/submitReview"

@@ -49,38 +49,39 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         splashImg.animate().translationY(-4000).setDuration(1000).setStartDelay(4000);
         appName.animate().translationY(4000).setDuration(1000).setStartDelay(4000);
-        lottieAnimationView.animate().translationY(1400).setDuration(1000).setStartDelay(4000);
-        auth = FirebaseAuth.getInstance();
+        lottieAnimationView.animate().translationY(4000).setDuration(1000).setStartDelay(4000);
 
-        AuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+       // auth = FirebaseAuth.getInstance();
 
-                if (user != null) {
-                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
-
-            }
-        };
+//        AuthStateListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
+//
+//                if (user != null) {
+//                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//
+//            }
+//        };
 
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        auth.addAuthStateListener(AuthStateListener);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (AuthStateListener != null) {
-            auth.removeAuthStateListener(AuthStateListener);
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        auth.addAuthStateListener(AuthStateListener);
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        if (AuthStateListener != null) {
+//            auth.removeAuthStateListener(AuthStateListener);
+//        }
+//    }
 
     private class ScreenSlidePageAdapter extends FragmentStatePagerAdapter {
 

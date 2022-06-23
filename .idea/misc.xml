@@ -5,12 +5,13 @@
       <map>
         <entry key="app/src/main/res/drawable/button_bg.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/shape.xml" value="0.1205" />
         <entry key="app/src/main/res/drawable/shapeimage.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/vie_bg.xml" value="0.1465" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.1824074074074074" />
-        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1824074074074074" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1824074074074074" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_movie_review.xml" value="0.1824074074074074" />
         <entry key="app/src/main/res/layout/activity_reviews.xml" value="0.1824074074074074" />
         <entry key="app/src/main/res/layout/activity_saved_movies.xml" value="0.1824074074074074" />
@@ -18,12 +19,12 @@
         <entry key="app/src/main/res/layout/activity_user_reviews.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dispaly_all.xml" value="0.20212765957446807" />
         <entry key="app/src/main/res/layout/dispaly_review.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_movie_review.xml" value="0.2900763358778626" />
+        <entry key="app/src/main/res/layout/fragment_movie_review.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_on_boarding2.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_on_boarding3.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_on_borading.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_on_borading1.xml" value="0.19375" />
-        <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.15568862275449102" />
         <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.19375" />
       </map>
     </option>
