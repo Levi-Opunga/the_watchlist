@@ -14,18 +14,20 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.R;
 import com.moringaschool.thewatchlist.models.Result;
 import com.moringaschool.thewatchlist.ui.MovieReview;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.viewHolder> {
-    List<Result> list;
+    List<Result> list = new ArrayList<Result>();
     Context context;
     private View view;
 
@@ -44,14 +46,21 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.view
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-     Picasso.get().load(list.get(position).getMultimedia().getSrc()).into(holder.imageView);
-             holder.nameView.setText(list.get(position).getDisplayTitle());
-     holder.summaryShort.setText(list.get(position).getSummaryShort());
-     holder.card.setOnClickListener(v->{
-         Intent intent = new Intent(context, MovieReview.class);
-         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-         context.startActivity(intent);
-     });
+        if(list==null){
+            list = Constants.RESULTS_RESTORE;
+        }
+        if (
+                list.get(position).getMultimedia()!= null) {
+            Picasso.get().load(list.get(position).getMultimedia().getSrc()).into(holder.imageView);
+        }
+        holder.nameView.setText(list.get(position).getDisplayTitle());
+        holder.summaryShort.setText(list.get(position).getSummaryShort());
+        holder.card.setOnClickListener(v -> {
+            MoviePagerAdapter.position = holder.getAdapterPosition();
+            Intent intent = new Intent(context, MovieReview.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -68,9 +77,10 @@ public class MovieItemAdapter extends RecyclerView.Adapter<MovieItemAdapter.view
         TextView summaryShort;
         @BindView(R.id.cardview)
         CardView card;
+
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this,view);
+            ButterKnife.bind(this, view);
 
         }
     }

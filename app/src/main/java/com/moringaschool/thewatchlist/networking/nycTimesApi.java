@@ -12,5 +12,11 @@ public interface nycTimesApi {
             @Query("api-key") String api_key
     );
 
+    @GET("reviews/search.json")
+    Call<Example> searchMovies(
+            @Query("query") String query,
+            @Query("api-key") String api_key
+    );
+
 
 }
