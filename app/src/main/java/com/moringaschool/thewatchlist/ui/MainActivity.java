@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.SearchView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.R;
 import com.moringaschool.thewatchlist.adapters.MovieItemAdapter;
@@ -41,12 +42,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Button button = this.findViewById(R.id.button);
-        apiCall();
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SavedMovies.class);
-            startActivity(intent);
+
+        TabLayout tablayout = this.findViewById(R.id.tabLayout);
+        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == 0) {
+                    return;
+                }
+                if (tab.getPosition() == 2) {
+                    Intent intent = new Intent(MainActivity.this, SavedMovies.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
         });
+
+        apiCall();
+
     }
 
     private void apiCall() {
