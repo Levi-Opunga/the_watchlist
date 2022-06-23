@@ -1,6 +1,7 @@
 package com.moringaschool.thewatchlist.fragments;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.R;
 import com.moringaschool.thewatchlist.models.Result;
+import com.moringaschool.thewatchlist.ui.ReviewsActivity;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -35,8 +38,10 @@ public class MovieReviewFragment extends Fragment implements View.OnClickListene
     @BindView(R.id.summaryReview) TextView summaryReview;
     @BindView(R.id.movieImage) ImageView movieImage;
     @BindView(R.id.rating) TextView rating;
-    @BindView(R.id.saveBtn) Button saveButton;
+    @BindView(R.id.saveBtn)
+    FloatingActionButton saveButton;
     @BindView(R.id.watchView) TextView mWatchTextView;
+    @BindView(R.id.reviewsButton) Button mReview;
 
 Result result;
 
@@ -68,6 +73,7 @@ FirebaseDatabase firebaseDatabase;
     }
         saveButton.setOnClickListener(this);
     mWatchTextView.setOnClickListener(this);
+    mReview.setOnClickListener(this);
 
 
 
@@ -81,6 +87,12 @@ FirebaseDatabase firebaseDatabase;
 //        String uid = user.getUid();
 
         if(v == saveButton){
+            //Changes the heart image after click
+            Drawable res = getResources().getDrawable(R.drawable.ic_baseline_favorite_24);
+
+            saveButton.setImageDrawable(res);
+            saveButton.setBackgroundColor(getResources().getColor(R.color.red));
+
             DatabaseReference movieRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_MOVIE).child("user");
@@ -92,6 +104,12 @@ FirebaseDatabase firebaseDatabase;
                 Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(result.getLink().getUrl()));
 
                 startActivity(i);
+        }
+        if(v == mReview){
+
+            Intent intent = new Intent(getActivity(), ReviewsActivity.class);
+            intent.putExtra("movie", result); //serializable
+            startActivity(intent);
         }
 
 

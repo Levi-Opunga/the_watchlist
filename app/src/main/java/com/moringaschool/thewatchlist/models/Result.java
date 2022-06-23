@@ -4,7 +4,9 @@ package com.moringaschool.thewatchlist.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable {
 
     @SerializedName("display_title")
     @Expose
