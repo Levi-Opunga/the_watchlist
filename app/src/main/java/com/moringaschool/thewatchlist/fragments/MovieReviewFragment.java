@@ -56,7 +56,7 @@ public class MovieReviewFragment extends Fragment implements View.OnClickListene
     FloatingActionButton saveButton;
     @BindView(R.id.watchView) TextView mWatchTextView;
     @BindView(R.id.reviewsButton) Button mReview;
-
+    List<Reviews> list = new ArrayList<Reviews>();
 Result result;
 
 FirebaseDatabase firebaseDatabase;
@@ -89,15 +89,20 @@ FirebaseDatabase firebaseDatabase;
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    List<Reviews> list = new ArrayList<Reviews>();
+
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         Reviews review= dataSnapshot.getValue(Reviews.class);
                         list.add(review);
-                      list =  list.stream().filter(rev -> rev.getMovie()
-                              .equals(result.getDisplayTitle()))
-                              .collect(Collectors.toList());
+
                         Log.d("ssssshhh","sssshhh");
                     }
+
+                    if(list != null){
+                        list =  list.stream().filter(rev -> rev.getMovie()
+                                        .equals(result.getDisplayTitle()))
+                                .collect(Collectors.toList());
+                    }
+
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
                     mRecyclerView.setLayoutManager(linearLayoutManager);
                     MultipleReviewAdapter adapter = new MultipleReviewAdapter(list,getContext());
