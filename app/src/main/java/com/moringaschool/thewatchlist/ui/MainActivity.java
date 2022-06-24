@@ -2,11 +2,13 @@ package com.moringaschool.thewatchlist.ui;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,9 +16,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.SearchView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.moringaschool.thewatchlist.Constants;
 import com.moringaschool.thewatchlist.R;
 import com.moringaschool.thewatchlist.adapters.MovieItemAdapter;
@@ -138,6 +142,11 @@ public class MainActivity extends AppCompatActivity {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
 
+        MenuItem more = menu.findItem(R.id.more);
+        ImageView image = (ImageView) more.getActionView();
+        Drawable res = getResources().getDrawable(R.drawable.ic_baseline_more_vert_24);
+        image.setImageDrawable(res);
+        image.setOnClickListener(this::showPopupMenu);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -183,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
 
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 if(newText== null){
@@ -227,5 +237,45 @@ public class MainActivity extends AppCompatActivity {
 
 
         return super.onCreateOptionsMenu(menu);
+    }
+    public boolean state;
+    void showPopupMenu(View view) {
+        PopupMenu popup = new PopupMenu(getApplicationContext(), view
+        );
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.popup_menumain, popup.getMenu());
+        popup.show();
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Menu menu = popup.getMenu();
+                for (int i = 0; i < menu.size(); i++) {
+                    menu.getItem(i).setChecked(false);
+                }
+                item.setChecked(true);
+             if (menu.getItem(1).isChecked()) {
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intent = new Intent(MainActivity.this, LogInActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    if (state) {
+
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        state = false;
+                        return true;
+                    } else {
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        state = true;
+                        return true;
+                    }
+                }
+
+
+                return false;
+            }
+        });
+
     }
 }

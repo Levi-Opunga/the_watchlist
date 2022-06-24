@@ -26,6 +26,8 @@
         <entry key="app/src/main/res/layout/fragment_on_borading1.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/login_tab_fragment.xml" value="0.15568862275449102" />
         <entry key="app/src/main/res/layout/signup_tab_fragment.xml" value="0.19375" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.1890625" />
+        <entry key="app/src/main/res/menu/popup_menumain.xml" value="0.1890625" />
       </map>
     </option>
   </component>
